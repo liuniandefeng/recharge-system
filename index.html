@@ -1918,7 +1918,8 @@
         function openRechargeModal(type) {
             currentRechargeType = type;
             
-            // 设置标签文字
+            // 设置弹窗标题和标签文字
+            document.getElementById('rechargeModalTitle').textContent = type === 'points' ? '积分充值' : '余额充值';
             const label = document.getElementById('rechargeTotalLabel');
             const noticeText = document.getElementById('rechargeNoticeText');
             if (type === 'points') {
