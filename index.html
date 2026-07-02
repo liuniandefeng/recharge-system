@@ -1887,8 +1887,9 @@
             
             // 更新侧边栏高亮
             document.querySelectorAll('.sidebar-item').forEach(el => el.classList.remove('active'));
-            if (['points', 'balance', 'bills', 'equity', 'credit'].includes(page)) {
-                document.getElementById('nav-' + page).classList.add('active');
+            const navEl = document.getElementById('nav-' + page);
+            if (navEl) {
+                navEl.classList.add('active');
             }
             
             // 更新面包屑
@@ -1928,9 +1929,22 @@
         // ==================== 弹窗控制 ====================
         function openRechargeModal(type) {
             currentRechargeType = type;
-            // 积分明细默认选中积分账户，余额明细默认选中批量账户
-            const defaultAccount = type === 'points' ? 'points' : 'batch';
-            document.querySelector(`input[name="rechargeAccount"][value="${defaultAccount}"]`).checked = true;
+            
+            // 根据充值来源显示/隐藏账户选项
+            const accountOption1 = document.getElementById('accountOption1');
+            const accountOption2 = document.getElementById('accountOption2');
+            
+            if (type === 'points') {
+                // 积分明细去充值：只显示积分账户
+                accountOption1.style.display = 'flex';
+                accountOption2.style.display = 'none';
+                document.querySelector('input[name="rechargeAccount"][value="points"]').checked = true;
+            } else {
+                // 余额明细去充值：只显示批量账户
+                accountOption1.style.display = 'none';
+                accountOption2.style.display = 'flex';
+                document.querySelector('input[name="rechargeAccount"][value="batch"]').checked = true;
+            }
             
             // 更新弹窗中的余额和可充金额显示
             document.getElementById('pointsAccountBalance').textContent = pointsBalanceValue.toLocaleString('zh-CN', {minimumFractionDigits: 2});
@@ -1968,7 +1982,7 @@
                 closeModal('storeSelectorModal');
                 return;
             }
-            showToast('如需为其他门店充值，请切换至该门店的"好伙伴"账号后进行操作。');
+            showToast('如需为其他门店充值，请登录至该门店的"好伙伴"账号后进行操作。');
         }
 
         function updateAccountInfo() {
