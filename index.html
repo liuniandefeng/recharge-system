@@ -1601,8 +1601,8 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
                     <div>
-                        <div class="text-sm font-medium text-blue-700">可充金额说明</div>
-                        <div class="text-sm text-blue-600 mt-1" id="rechargeNoticeText">可充值金额已根据您的账户采购折扣自动计算，确保金额准确无误。</div>
+                        <div class="text-sm font-medium text-blue-700" id="rechargeNoticeTitle">本次充值到账积分说明</div>
+                         <div class="text-sm text-blue-600 mt-1" id="rechargeNoticeText">充值到账积分已根据您的账户采购折扣自动计算，确保金额准确无误，如有疑问，请联系您的商务经理。</div>
                     </div>
                 </div>
 
@@ -1618,7 +1618,7 @@
                                     <th class="px-4 py-3 text-left w-10"></th>
                                     <th class="px-4 py-3 text-left font-medium text-gray-700">付款单号</th>
                                     <th class="px-4 py-3 text-right font-medium text-gray-700">付款金额</th>
-                                    <th class="px-4 py-3 text-right font-medium text-gray-700">可充金额</th>
+                                    <th class="px-4 py-3 text-right font-medium text-gray-700">剩余可充金额</th>
                                     <th class="px-4 py-3 text-right font-medium text-gray-700">充值金额</th>
                                     <th class="px-4 py-3 text-left font-medium text-gray-700">付款时间</th>
                                     <th class="px-4 py-3 text-left font-medium text-gray-700">付款备注</th>
@@ -1632,13 +1632,20 @@
                     <div id="paymentSelectionError" class="text-red-500 text-sm mt-2 hidden"></div>
                 </div>
 
-                <!-- 本次充值合计 -->
-                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-5">
+                <!-- 合计充值金额 -->
+                <div class="flex items-center justify-between mb-3 px-1">
+                    <span class="text-sm font-medium text-gray-700">合计充值金额：</span>
+                    <span class="text-lg font-bold text-gray-900" id="totalRechargeInput">0.00</span>
+                </div>
+
+                <!-- 本次充值到账合计 -->
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-3">
                     <div class="flex items-center justify-between">
-                        <span class="text-sm text-blue-700 font-medium" id="rechargeTotalLabel">本次充值金额：</span>
-                        <span class="text-xl font-bold text-blue-600" id="rechargeTotalAmount">0.00</span>
+                        <span class="text-sm text-blue-700 font-medium" id="rechargeTotalLabel">本次充值到账积分：</span>
+                        <span class="text-xl font-bold text-blue-600" id="rechargeTotalAmount">0</span>
                     </div>
                 </div>
+                <div class="text-xs text-gray-400 mb-5 px-1" id="rechargeFormula">本次充值到账积分 = 合计充值金额 / 当前门店的采购折扣</div>
 
                 <!-- 按钮 -->
                 <div class="flex gap-3">
@@ -1921,13 +1928,19 @@
             // 设置弹窗标题和标签文字
             document.getElementById('rechargeModalTitle').textContent = type === 'points' ? '积分充值' : '余额充值';
             const label = document.getElementById('rechargeTotalLabel');
+            const noticeTitle = document.getElementById('rechargeNoticeTitle');
             const noticeText = document.getElementById('rechargeNoticeText');
+            const formula = document.getElementById('rechargeFormula');
             if (type === 'points') {
-                label.textContent = '本次充值积分：';
-                noticeText.textContent = '可充值金额已根据您的账户采购折扣自动计算，确保金额准确无误。';
+                label.textContent = '本次充值到账积分：';
+                noticeTitle.textContent = '本次充值到账积分说明';
+                noticeText.textContent = '充值到账积分已根据您的账户采购折扣自动计算，确保金额准确无误，如有疑问，请联系您的商务经理。';
+                formula.textContent = '本次充值到账积分 = 合计充值金额 / 当前门店的采购折扣';
             } else {
-                label.textContent = '本次充值金额：';
-                noticeText.textContent = '可充值金额已根据您的账户结算系数自动计算，确保金额准确无误。';
+                label.textContent = '本次充值到账金额：';
+                noticeTitle.textContent = '本次充值到账金额说明';
+                noticeText.textContent = '充值到账金额已根据您的账户结算系数自动计算，确保金额准确无误，如有疑问，请联系您的商务经理。';
+                formula.textContent = '本次充值到账金额 = 合计充值金额 × 当前门店的结算系数';
             }
             
             // 渲染付款单列表
@@ -1953,24 +1966,29 @@
             const isPoints = currentRechargeType === 'points';
             
             tbody.innerHTML = paymentOrders.map((order, index) => {
+                // 剩余可充金额 = 付款金额
+                const remainingAmount = order.payAmount;
+                // 计算实际充值到账的金额（积分/余额）
                 const rechargeAmount = calculateRechargeAmount(order.payAmount, currentRechargeType);
                 return `
                 <tr class="border-t border-gray-100 hover:bg-gray-50">
                     <td class="px-4 py-3">
                         <input type="checkbox" class="payment-checkbox rounded border-gray-300" 
                             data-index="${index}" 
+                            data-pay-amount="${remainingAmount}"
                             data-recharge-amount="${rechargeAmount}"
                             onchange="updatePaymentSelection()">
                     </td>
                     <td class="px-4 py-3 font-medium text-gray-900">${order.id}</td>
                     <td class="px-4 py-3 text-right text-gray-700">${order.payAmount.toLocaleString('zh-CN', {minimumFractionDigits: 2})}</td>
-                    <td class="px-4 py-3 text-right text-gray-700">${isPoints ? rechargeAmount.toLocaleString('zh-CN') : rechargeAmount.toLocaleString('zh-CN', {minimumFractionDigits: 2})}</td>
+                    <td class="px-4 py-3 text-right text-gray-700 remaining-amount" data-index="${index}">${remainingAmount.toLocaleString('zh-CN', {minimumFractionDigits: 2})}</td>
                     <td class="px-4 py-3 text-right">
                         <input type="text" 
                             class="recharge-input w-24 text-right border border-gray-300 rounded px-2 py-1 text-sm" 
                             data-index="${index}"
+                            data-pay-amount="${remainingAmount}"
                             placeholder="0.00"
-                            oninput="validateRechargeInput(this, ${rechargeAmount})">
+                            oninput="validateRechargeInput(this, ${remainingAmount})">
                     </td>
                     <td class="px-4 py-3 text-gray-500">${order.time}</td>
                     <td class="px-4 py-3 text-gray-500">${order.remark}</td>
@@ -1978,6 +1996,7 @@
             `}).join('');
             
             // 重置合计金额和错误提示
+            document.getElementById('totalRechargeInput').textContent = '0.00';
             document.getElementById('rechargeTotalAmount').textContent = isPoints ? '0' : '0.00';
             document.getElementById('paymentSelectionError').classList.add('hidden');
         }
@@ -1987,24 +2006,31 @@
             // 已移除全选功能
         }
         
-        // 更新付款单选择状态 - 计算输入充值金额的合计
+        // 更新付款单选择状态
         function updatePaymentSelection() {
             const isPoints = currentRechargeType === 'points';
-            let totalInputAmount = 0;
+            let totalInputAmount = 0;      // 合计充值金额（输入总和）
+            let totalActualAmount = 0;     // 本次充值到账金额（经折扣/系数换算）
             
-            // 遍历所有充值金额输入框，累加已输入的金额
+            // 遍历所有充值金额输入框
             document.querySelectorAll('.recharge-input').forEach(input => {
                 const amount = parseFloat(input.value) || 0;
                 if (amount > 0) {
                     totalInputAmount += amount;
+                    // 计算实际到账金额（积分=金额/1.08取整，余额=金额*0.92）
+                    const actual = calculateRechargeAmount(amount, currentRechargeType);
+                    totalActualAmount += actual;
                 }
             });
             
-            // 展示输入充值金额的合计
+            // 展示合计充值金额（输入总和）
+            document.getElementById('totalRechargeInput').textContent = totalInputAmount.toLocaleString('zh-CN', {minimumFractionDigits: 2});
+            
+            // 展示实际到账的合计金额
             if (isPoints) {
-                document.getElementById('rechargeTotalAmount').textContent = Math.round(totalInputAmount).toLocaleString('zh-CN');
+                document.getElementById('rechargeTotalAmount').textContent = Math.round(totalActualAmount).toLocaleString('zh-CN');
             } else {
-                document.getElementById('rechargeTotalAmount').textContent = totalInputAmount.toLocaleString('zh-CN', {minimumFractionDigits: 2});
+                document.getElementById('rechargeTotalAmount').textContent = totalActualAmount.toLocaleString('zh-CN', {minimumFractionDigits: 2});
             }
             document.getElementById('paymentSelectionError').classList.add('hidden');
         }
@@ -2016,11 +2042,12 @@
             const index = input.dataset.index;
             const checkbox = document.querySelector(`.payment-checkbox[data-index="${index}"]`);
             const row = input.closest('tr');
+            const remainingCell = row.querySelector('.remaining-amount');
+            const payAmount = parseFloat(input.dataset.payAmount) || maxAmount;
             
             if (isPoints) {
                 // 积分：只能输入正整数
                 if (value && !/^\d+$/.test(value)) {
-                    // 过滤掉非数字字符
                     input.value = value.replace(/[^\d]/g, '');
                     if (!input.value) return;
                 }
@@ -2034,13 +2061,21 @@
             
             const amount = parseFloat(input.value) || 0;
             
-            // 不能超过可充金额
+            // 不能超过剩余可充金额
             if (amount > maxAmount) {
                 input.value = isPoints ? Math.floor(maxAmount).toString() : maxAmount.toFixed(2);
             }
             
+            const finalAmount = parseFloat(input.value) || 0;
+            
+            // 更新剩余可充金额 = 付款金额 - 充值金额
+            const remaining = payAmount - finalAmount;
+            if (remainingCell) {
+                remainingCell.textContent = remaining.toLocaleString('zh-CN', {minimumFractionDigits: 2});
+            }
+            
             // 如果输入了金额，自动选中该付款单并高亮行
-            if (amount > 0) {
+            if (finalAmount > 0) {
                 if (checkbox) checkbox.checked = true;
                 if (row) row.classList.add('bg-blue-50');
             } else {
