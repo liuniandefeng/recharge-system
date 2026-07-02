@@ -453,14 +453,27 @@
     <!-- Toast容器 -->
     <div class="toast-container" id="toastContainer"></div>
     
-    <!-- Tooltip -->
-    <div class="tooltip" id="tooltip">
+    <!-- Tooltip 积分 -->
+    <div class="tooltip" id="tooltipPoints">
         <p class="font-medium mb-1">待充值金额计算规则</p>
         <div class="border-t border-gray-600 my-2"></div>
         <p class="text-gray-300 text-xs leading-relaxed">
-            待充值金额 = 有效回款单金额 × 对应客户结算系数<br>
+            待充值金额 = 有效回款单金额 / 对应账户采购折扣<br>
             系统自动识别您已提交的有效回款单<br>
-            不同结算系数的商户将展示对应可充值金额<br>
+            不同采购折扣的账户将展示对应可充值金额<br>
+            金额由系统自动计算，确保准确无误<br>
+            如有疑问，请联系您的专属商务经理咨询
+        </p>
+    </div>
+
+    <!-- Tooltip 余额 -->
+    <div class="tooltip" id="tooltipBalance">
+        <p class="font-medium mb-1">待充值金额计算规则</p>
+        <div class="border-t border-gray-600 my-2"></div>
+        <p class="text-gray-300 text-xs leading-relaxed">
+            待充值金额 = 有效回款单金额 × 对应账户结算系数<br>
+            系统自动识别您已提交的有效回款单<br>
+            不同结算系数的账户将展示对应可充值金额<br>
             金额由系统自动计算，确保准确无误<br>
             如有疑问，请联系您的专属商务经理咨询
         </p>
@@ -621,9 +634,9 @@
                             </div>
                             <div class="flex items-end justify-between">
                                 <div>
-                                    <div class="text-3xl font-bold text-orange-500" id="pointsMaxRecharge">10,000.00</div>
+                                    <div class="text-3xl font-bold text-orange-500" id="pointsMaxRecharge">25,924</div>
                                     <div class="text-sm text-gray-500 mt-1 flex items-center gap-1">基于您的账单金额计算
-                                        <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" onmouseenter="showTooltip(event)" onmouseleave="hideTooltip()">
+                                        <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" onmouseenter="showTooltip(event, 'points')" onmouseleave="hideTooltip()">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                         </svg>
                                     </div>
@@ -756,9 +769,9 @@
                             </div>
                             <div class="flex items-end justify-between">
                                 <div>
-                                    <div class="text-3xl font-bold text-orange-500" id="balanceMaxRecharge">8,000.00</div>
+                                    <div class="text-3xl font-bold text-orange-500" id="balanceMaxRecharge">25,760.00</div>
                                     <div class="text-sm text-gray-500 mt-1 flex items-center gap-1">基于您的账单金额计算
-                                        <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" onmouseenter="showTooltip(event)" onmouseleave="hideTooltip()">
+                                        <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" onmouseenter="showTooltip(event, 'balance')" onmouseleave="hideTooltip()">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                         </svg>
                                     </div>
@@ -1576,7 +1589,7 @@
 
     <!-- 充值弹窗 -->
     <div class="modal-overlay" id="rechargeModal">
-        <div class="modal-content">
+        <div class="modal-content" style="max-width: 900px;">
             <div class="p-6 border-b flex items-center justify-between">
                 <h3 class="text-lg font-semibold" id="rechargeModalTitle">账户充值</h3>
                 <button class="text-gray-400 hover:text-gray-600" onclick="closeModal('rechargeModal')">
@@ -1601,55 +1614,52 @@
                         </button>
                     </div>
                 </div>
-                
-                <!-- 充值提示 -->
-                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-5 flex items-start gap-3">
+
+                <!-- 可充金额说明 -->
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-5 flex items-start gap-3" id="rechargeNotice">
                     <svg class="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
-                    <div class="text-sm text-blue-700">
-                        <span class="font-medium">充值金额说明</span><br>
-                        可充值金额已根据您的账户采购折扣自动计算，确保金额准确无误。
+                    <div>
+                        <div class="text-sm font-medium text-blue-700">可充金额说明</div>
+                        <div class="text-sm text-blue-600 mt-1" id="rechargeNoticeText">可充值金额已根据您的账户采购折扣自动计算，确保金额准确无误。</div>
                     </div>
                 </div>
-                
-                <!-- 充值账户 -->
+
+                <!-- 付款单列表 -->
                 <div class="mb-5">
-                    <label class="block text-sm font-medium text-gray-700 mb-3">请选择充值账户 <span class="text-red-500">*</span></label>
-                    <div class="space-y-3">
-                        <label class="flex items-center gap-3 p-4 border-2 rounded-lg cursor-pointer transition-all has-[:checked]:border-blue-500 has-[:checked]:bg-blue-50 border-gray-200 hover:border-gray-300" id="accountOption1">
-                            <input type="radio" name="rechargeAccount" value="points" class="radio-custom" checked onchange="updateAccountInfo()">
-                            <div class="flex-1">
-                                <div class="font-medium text-gray-900">积分账户</div>
-                                <div class="text-sm text-gray-500 mt-1">当前余额：<span class="text-gray-700" id="pointsAccountBalance">221.88</span>积分</div>
-                            </div>
-                            <div class="text-right">
-                                <div class="text-xs text-gray-400">可充金额</div>
-                                <div class="font-semibold text-gray-900" id="pointsMaxAmount">10,000.00</div>
-                            </div>
-                        </label>
-                        <label class="flex items-center gap-3 p-4 border-2 rounded-lg cursor-pointer transition-all has-[:checked]:border-blue-500 has-[:checked]:bg-blue-50 border-gray-200 hover:border-gray-300" id="accountOption2">
-                            <input type="radio" name="rechargeAccount" value="batch" class="radio-custom" onchange="updateAccountInfo()">
-                            <div class="flex-1">
-                                <div class="font-medium text-gray-900">批量账户</div>
-                                <div class="text-sm text-gray-500 mt-1">当前余额：<span class="text-gray-700" id="batchAccountBalance">1.99</span>元</div>
-                            </div>
-                            <div class="text-right">
-                                <div class="text-xs text-gray-400">可充金额</div>
-                                <div class="font-semibold text-gray-900" id="batchMaxAmount">8,000.00</div>
-                            </div>
-                        </label>
+                    <div class="flex items-center justify-between mb-3">
+                        <label class="block text-sm font-medium text-gray-700">请选择付款单 <span class="text-red-500">*</span></label>
                     </div>
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <table class="w-full text-sm">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-4 py-3 text-left w-10">
+                                        <input type="checkbox" id="selectAllPayments" class="rounded border-gray-300" onchange="toggleSelectAllPayments()">
+                                    </th>
+                                    <th class="px-4 py-3 text-left font-medium text-gray-700">付款单号</th>
+                                    <th class="px-4 py-3 text-right font-medium text-gray-700">付款金额</th>
+                                    <th class="px-4 py-3 text-right font-medium text-gray-700">可充金额</th>
+                                    <th class="px-4 py-3 text-right font-medium text-gray-700">充值金额</th>
+                                    <th class="px-4 py-3 text-left font-medium text-gray-700">付款时间</th>
+                                    <th class="px-4 py-3 text-left font-medium text-gray-700">付款备注</th>
+                                </tr>
+                            </thead>
+                            <tbody id="paymentListBody">
+                                <!-- 动态生成 -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="paymentSelectionError" class="text-red-500 text-sm mt-2 hidden"></div>
                 </div>
-                
-                <!-- 充值金额 -->
-                <div class="mb-5">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">充值金额 <span class="text-red-500">*</span></label>
-                    <div class="flex gap-2">
-                        <input type="text" id="rechargeAmount" class="flex-1 border border-gray-300 rounded-lg px-3 py-2.5" placeholder="请输入充值金额" oninput="validateRechargeAmount(this)">
-                        <button class="px-4 py-2 text-blue-600 text-sm font-medium hover:text-blue-700 whitespace-nowrap" onclick="setMaxRecharge()">全部充值</button>
+
+                <!-- 本次充值合计 -->
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-5">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-blue-700 font-medium" id="rechargeTotalLabel">本次充值金额：</span>
+                        <span class="text-xl font-bold text-blue-600" id="rechargeTotalAmount">0.00</span>
                     </div>
-                    <div id="rechargeAmountError" class="text-red-500 text-sm mt-1 hidden"></div>
                 </div>
 
                 <!-- 按钮 -->
@@ -1819,8 +1829,8 @@
         // 账户余额和待充值额度
         let pointsBalanceValue = 221.88;
         let balanceAmountValue = 1.99;
-        let pointsMaxRechargeValue = 10000.00;
-        let balanceMaxRechargeValue = 8000.00;
+        let pointsMaxRechargeValue = 25924;
+        let balanceMaxRechargeValue = 25760.00;
 
         // ==================== 初始化 ====================
         document.addEventListener('DOMContentLoaded', function() {
@@ -1930,31 +1940,129 @@
         function openRechargeModal(type) {
             currentRechargeType = type;
             
-            // 根据充值来源显示/隐藏账户选项
-            const accountOption1 = document.getElementById('accountOption1');
-            const accountOption2 = document.getElementById('accountOption2');
-            
+            // 设置标签文字
+            const label = document.getElementById('rechargeTotalLabel');
+            const noticeText = document.getElementById('rechargeNoticeText');
             if (type === 'points') {
-                // 积分明细去充值：只显示积分账户
-                accountOption1.style.display = 'flex';
-                accountOption2.style.display = 'none';
-                document.querySelector('input[name="rechargeAccount"][value="points"]').checked = true;
+                label.textContent = '本次充值积分：';
+                noticeText.textContent = '可充值金额已根据您的账户采购折扣自动计算，确保金额准确无误。';
             } else {
-                // 余额明细去充值：只显示批量账户
-                accountOption1.style.display = 'none';
-                accountOption2.style.display = 'flex';
-                document.querySelector('input[name="rechargeAccount"][value="batch"]').checked = true;
+                label.textContent = '本次充值金额：';
+                noticeText.textContent = '可充值金额已根据您的账户结算系数自动计算，确保金额准确无误。';
             }
             
-            // 更新弹窗中的余额和可充金额显示
-            document.getElementById('pointsAccountBalance').textContent = pointsBalanceValue.toLocaleString('zh-CN', {minimumFractionDigits: 2});
-            document.getElementById('pointsMaxAmount').textContent = pointsMaxRechargeValue.toLocaleString('zh-CN', {minimumFractionDigits: 2});
-            document.getElementById('batchAccountBalance').textContent = balanceAmountValue.toLocaleString('zh-CN', {minimumFractionDigits: 2});
-            document.getElementById('batchMaxAmount').textContent = balanceMaxRechargeValue.toLocaleString('zh-CN', {minimumFractionDigits: 2});
+            // 渲染付款单列表
+            renderPaymentList();
             
-            updateAccountInfo();
-            document.getElementById('rechargeAmount').value = '';
             document.getElementById('rechargeModal').classList.add('active');
+        }
+        
+        // 计算可充金额
+        function calculateRechargeAmount(payAmount, type) {
+            if (type === 'points') {
+                // 积分：付款金额 / 1.08，四舍五入取整
+                return Math.round(payAmount / 1.08);
+            } else {
+                // 余额：付款金额 * 0.92，四舍五入保留两位小数
+                return Math.round(payAmount * 0.92 * 100) / 100;
+            }
+        }
+
+        // 渲染付款单列表
+        function renderPaymentList() {
+            const tbody = document.getElementById('paymentListBody');
+            const isPoints = currentRechargeType === 'points';
+            
+            tbody.innerHTML = paymentOrders.map((order, index) => {
+                const rechargeAmount = calculateRechargeAmount(order.payAmount, currentRechargeType);
+                return `
+                <tr class="border-t border-gray-100 hover:bg-gray-50">
+                    <td class="px-4 py-3">
+                        <input type="checkbox" class="payment-checkbox rounded border-gray-300" 
+                            data-index="${index}" 
+                            data-recharge-amount="${rechargeAmount}"
+                            onchange="updatePaymentSelection()">
+                    </td>
+                    <td class="px-4 py-3 font-medium text-gray-900">${order.id}</td>
+                    <td class="px-4 py-3 text-right text-gray-700">${order.payAmount.toLocaleString('zh-CN', {minimumFractionDigits: 2})}</td>
+                    <td class="px-4 py-3 text-right text-gray-700">${isPoints ? rechargeAmount.toLocaleString('zh-CN') : rechargeAmount.toLocaleString('zh-CN', {minimumFractionDigits: 2})}</td>
+                    <td class="px-4 py-3 text-right">
+                        <input type="text" 
+                            class="recharge-input w-24 text-right border border-gray-300 rounded px-2 py-1 text-sm" 
+                            data-index="${index}"
+                            placeholder="0.00"
+                            oninput="validateRechargeInput(this, ${rechargeAmount})">
+                    </td>
+                    <td class="px-4 py-3 text-gray-500">${order.time}</td>
+                    <td class="px-4 py-3 text-gray-500">${order.remark}</td>
+                </tr>
+            `}).join('');
+            
+            // 重置全选状态和合计金额
+            document.getElementById('selectAllPayments').checked = false;
+            document.getElementById('rechargeTotalAmount').textContent = isPoints ? '0' : '0.00';
+            document.getElementById('paymentSelectionError').classList.add('hidden');
+        }
+        
+        // 全选/取消全选
+        function toggleSelectAllPayments() {
+            const selectAll = document.getElementById('selectAllPayments').checked;
+            document.querySelectorAll('.payment-checkbox').forEach(cb => {
+                cb.checked = selectAll;
+            });
+            updatePaymentSelection();
+        }
+        
+        // 更新付款单选择状态
+        function updatePaymentSelection() {
+            const checkboxes = document.querySelectorAll('.payment-checkbox:checked');
+            const isPoints = currentRechargeType === 'points';
+            let totalRechargeAmount = 0; // 可充金额合计
+            
+            checkboxes.forEach(cb => {
+                // 累加可充金额
+                const rechargeAmount = parseFloat(cb.dataset.rechargeAmount) || 0;
+                totalRechargeAmount += rechargeAmount;
+            });
+            
+            // 展示可充金额合计（待充值金额）
+            if (isPoints) {
+                document.getElementById('rechargeTotalAmount').textContent = Math.round(totalRechargeAmount).toLocaleString('zh-CN');
+            } else {
+                document.getElementById('rechargeTotalAmount').textContent = totalRechargeAmount.toLocaleString('zh-CN', {minimumFractionDigits: 2});
+            }
+            document.getElementById('paymentSelectionError').classList.add('hidden');
+        }
+        
+        // 校验充值金额输入
+        function validateRechargeInput(input, maxAmount) {
+            const value = input.value.trim();
+            const isPoints = currentRechargeType === 'points';
+            
+            if (isPoints) {
+                // 积分：只能输入正整数
+                if (value && !/^\d+$/.test(value)) {
+                    // 过滤掉非数字字符
+                    input.value = value.replace(/[^\d]/g, '');
+                    if (!input.value) return;
+                }
+            } else {
+                // 余额：最多两位小数
+                if (value && !/^\d*\.?\d{0,2}$/.test(value)) {
+                    input.value = value.slice(0, -1);
+                    return;
+                }
+            }
+            
+            const amount = parseFloat(input.value) || 0;
+            
+            // 不能超过可充金额
+            if (amount > maxAmount) {
+                input.value = isPoints ? Math.floor(maxAmount).toString() : maxAmount.toFixed(2);
+            }
+            
+            // 更新已选金额
+            updatePaymentSelection();
         }
 
         function closeModal(id) {
@@ -1969,6 +2077,14 @@
             '东莞赵六汽车维修中心': { pointsMax: 8000, balanceMax: 6000, pointsBalance: 150.00, balanceBalance: 20.00 }
         };
         let currentStore = '广东张三有限公司';
+
+        // 付款单数据
+        const paymentOrders = [
+            { id: 'FK20250601001', payAmount: 5000.00, rechargeAmount: 5000.00, time: '2025-06-01 10:30:00', remark: '6月采购预付款' },
+            { id: 'FK20250615002', payAmount: 8000.00, rechargeAmount: 8000.00, time: '2025-06-15 14:20:00', remark: '季度采购款' },
+            { id: 'FK20250701003', payAmount: 3000.00, rechargeAmount: 3000.00, time: '2025-07-01 09:15:00', remark: '7月首批货款' },
+            { id: 'FK20250710004', payAmount: 12000.00, rechargeAmount: 12000.00, time: '2025-07-10 16:45:00', remark: '大批量采购款' }
+        ];
 
         // 打开门店选择器
         function openStoreSelector() {
@@ -1985,108 +2101,83 @@
             showToast('如需为其他门店充值，请登录至该门店的"好伙伴"账号后进行操作。');
         }
 
+        // 保留旧函数兼容（不再使用）
         function updateAccountInfo() {
-            const selected = document.querySelector('input[name="rechargeAccount"]:checked').value;
-            const amountInput = document.getElementById('rechargeAmount');
-            amountInput.value = '';
-            document.getElementById('rechargeAmountError').classList.add('hidden');
+            // 已移除账户选择，此函数不再需要
         }
 
-        // 充值金额输入校验
+        // 保留旧函数兼容（不再使用）
         function validateRechargeAmount(input) {
-            const selected = document.querySelector('input[name="rechargeAccount"]:checked').value;
-            const isPoints = selected === 'points';
-            const errorDiv = document.getElementById('rechargeAmountError');
-            const value = input.value;
-            
-            // 清空错误提示
-            errorDiv.classList.add('hidden');
-            errorDiv.textContent = '';
-            
-            if (value === '') return;
-            
-            if (isPoints) {
-                // 积分充值：仅支持正整数
-                if (!/^\d+$/.test(value)) {
-                    // 包含非数字字符，可能是小数
-                    if (value.includes('.')) {
-                        errorDiv.textContent = '积分充值不支持小数';
-                        errorDiv.classList.remove('hidden');
-                    }
-                    // 过滤掉非数字字符
-                    input.value = value.replace(/[^\d]/g, '');
-                    return;
-                }
-            } else {
-                // 余额充值：支持最多两位小数
-                if (!/^\d*\.?\d{0,2}$/.test(value)) {
-                    errorDiv.textContent = '批量充值最多支持两位小数';
-                    errorDiv.classList.remove('hidden');
-                    // 限制为两位小数
-                    const match = value.match(/^(\d*\.?\d{0,2})/);
-                    input.value = match ? match[1] : '';
-                    return;
-                }
-            }
+            // 已改为付款单列表模式，此函数不再需要
         }
 
         function openConfirmModal() {
-            const amountInput = document.getElementById('rechargeAmount');
-            const amountValue = amountInput.value.trim();
-            const errorDiv = document.getElementById('rechargeAmountError');
+            const checkboxes = document.querySelectorAll('.payment-checkbox:checked');
+            const errorDiv = document.getElementById('paymentSelectionError');
             
-            const selected = document.querySelector('input[name="rechargeAccount"]:checked').value;
-            const isPoints = selected === 'points';
+            // 校验1：至少选择一个付款单
+            if (checkboxes.length === 0) {
+                errorDiv.textContent = '请至少选择一个付款单';
+                errorDiv.classList.remove('hidden');
+                return;
+            }
+            
+            // 收集选中的付款单及充值金额
+            let totalAmount = 0;
+            const selectedPayments = [];
+            
+            checkboxes.forEach(cb => {
+                const index = cb.dataset.index;
+                const input = document.querySelector(`.recharge-input[data-index="${index}"]`);
+                const amount = parseFloat(input?.value) || 0;
+                
+                if (amount > 0) {
+                    totalAmount += amount;
+                    selectedPayments.push({
+                        ...paymentOrders[index],
+                        rechargeAmount: amount
+                    });
+                }
+            });
+            
+            // 校验2：至少有一个付款单输入了充值金额
+            if (totalAmount <= 0) {
+                errorDiv.textContent = '请至少为一个选中的付款单输入充值金额';
+                errorDiv.classList.remove('hidden');
+                return;
+            }
+            
+            // 校验3：检查每个输入的金额是否超过可充金额
+            for (const payment of selectedPayments) {
+                const originalOrder = paymentOrders[paymentOrders.findIndex(p => p.id === payment.id)];
+                const maxRechargeAmount = calculateRechargeAmount(originalOrder.payAmount, currentRechargeType);
+                if (payment.rechargeAmount > maxRechargeAmount) {
+                    errorDiv.textContent = `付款单 ${payment.id} 的充值金额不能超过可充金额`;
+                    errorDiv.classList.remove('hidden');
+                    return;
+                }
+            }
+            
+            const isPoints = currentRechargeType === 'points';
             const accountName = isPoints ? '积分账户' : '批量账户';
             const unit = isPoints ? '积分' : '元';
             const currentBalance = isPoints ? 221.88 : 1.99;
-            const maxAmount = isPoints ? 10000 : 8000;
             
-            // 校验1：不能为空
-            if (!amountValue || amountValue === '') {
-                errorDiv.textContent = '充值金额不能为空';
-                errorDiv.classList.remove('hidden');
-                return;
-            }
+            const afterBalance = (currentBalance + totalAmount).toFixed(2);
             
-            // 校验2：积分仅支持正整数
-            if (isPoints) {
-                if (!/^\d+$/.test(amountValue)) {
-                    errorDiv.textContent = '积分充值不支持小数';
-                    errorDiv.classList.remove('hidden');
-                    return;
-                }
-            } else {
-                // 余额最多两位小数
-                if (!/^\d+\.?\d{0,2}$/.test(amountValue)) {
-                    errorDiv.textContent = '批量充值最多支持两位小数';
-                    errorDiv.classList.remove('hidden');
-                    return;
-                }
-            }
-            
-            const amount = parseFloat(amountValue);
-            
-            // 校验3：必须大于0
-            if (amount <= 0) {
-                errorDiv.textContent = '请输入有效的充值金额';
-                errorDiv.classList.remove('hidden');
-                return;
-            }
-            
-            // 校验4：不能超过可充金额
-            if (amount > maxAmount) {
-                errorDiv.textContent = '充值金额不能超过可充金额';
-                errorDiv.classList.remove('hidden');
-                return;
-            }
-
-            const afterBalance = (currentBalance + amount).toFixed(2);
+            // 保存选中的付款单用于提交
+            window.selectedPaymentOrders = selectedPayments;
+            window.totalRechargeAmount = totalAmount;
 
             document.getElementById('confirmAccount').textContent = accountName;
             document.getElementById('confirmCurrentBalance').textContent = currentBalance.toFixed(2) + unit;
-            document.getElementById('confirmAmount').textContent = '+' + amount.toLocaleString('zh-CN', {minimumFractionDigits: 2}) + ' ' + unit;
-            document.getElementById('confirmAfterBalance').textContent = parseFloat(afterBalance).toLocaleString('zh-CN', {minimumFractionDigits: 2}) + ' ' + unit;
+            if (isPoints) {
+                document.getElementById('confirmAmount').textContent = '+' + Math.round(totalAmount).toLocaleString('zh-CN') + ' ' + unit;
+                document.getElementById('confirmAfterBalance').textContent = parseFloat(afterBalance).toLocaleString('zh-CN', {minimumFractionDigits: 2}) + ' ' + unit;
+            } else {
+                document.getElementById('confirmAmount').textContent = '+' + totalAmount.toLocaleString('zh-CN', {minimumFractionDigits: 2}) + ' ' + unit;
+                document.getElementById('confirmAfterBalance').textContent = parseFloat(afterBalance).toLocaleString('zh-CN', {minimumFractionDigits: 2}) + ' ' + unit;
+            }
 
             closeModal('rechargeModal');
             document.getElementById('confirmModal').classList.add('active');
@@ -2099,8 +2190,8 @@
 
         function submitRecharge() {
             closeModal('confirmModal');
-            const isPoints = currentRechargeType === 'points' || document.querySelector('input[name="rechargeAccount"]:checked').value === 'points';
-            const amount = parseFloat(document.getElementById('rechargeAmount').value);
+            const isPoints = currentRechargeType === 'points';
+            const amount = window.totalRechargeAmount || 0;
             const now = new Date();
             const timeStr = formatDate(now) + ' ' + now.toTimeString().slice(0, 8);
             
@@ -2189,10 +2280,9 @@
             showToast('充值成功，余额已更新');
         }
 
+        // 保留旧函数兼容（不再使用）
         function setMaxRecharge() {
-            const selected = document.querySelector('input[name="rechargeAccount"]:checked').value;
-            const maxAmount = selected === 'points' ? pointsMaxRechargeValue : balanceMaxRechargeValue;
-            document.getElementById('rechargeAmount').value = maxAmount;
+            // 已改为付款单列表模式，此函数不再需要
         }
 
         // ==================== 表格渲染 ====================
@@ -2774,8 +2864,8 @@
         }
 
         // ==================== Tooltip ====================
-        function showTooltip(event) {
-            const tooltip = document.getElementById('tooltip');
+        function showTooltip(event, type) {
+            const tooltip = document.getElementById(type === 'points' ? 'tooltipPoints' : 'tooltipBalance');
             const rect = event.target.getBoundingClientRect();
             tooltip.style.left = rect.left + 'px';
             tooltip.style.top = (rect.bottom + 8) + 'px';
@@ -2783,7 +2873,7 @@
         }
 
         function hideTooltip() {
-            document.getElementById('tooltip').classList.remove('show');
+            document.querySelectorAll('.tooltip').forEach(el => el.classList.remove('show'));
         }
 
         // ==================== 辅助函数 ====================
