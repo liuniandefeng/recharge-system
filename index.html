@@ -2159,12 +2159,12 @@
                 return;
             }
             
-            // 校验3：检查每个输入的金额是否超过可充金额
+            // 校验3：检查每个输入的金额是否超过剩余可充金额（付款金额）
             for (const payment of selectedPayments) {
                 const originalOrder = paymentOrders[paymentOrders.findIndex(p => p.id === payment.id)];
-                const maxRechargeAmount = calculateRechargeAmount(originalOrder.payAmount, currentRechargeType);
-                if (payment.rechargeAmount > maxRechargeAmount) {
-                    errorDiv.textContent = `付款单 ${payment.id} 的充值金额不能超过可充金额`;
+                const maxAmount = originalOrder.payAmount;
+                if (payment.rechargeAmount > maxAmount) {
+                    errorDiv.textContent = `付款单 ${payment.id} 的充值金额不能超过剩余可充金额`;
                     errorDiv.classList.remove('hidden');
                     return;
                 }
