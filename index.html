@@ -1200,9 +1200,9 @@
                                     <div class="flex-1 min-w-0 flex flex-col gap-1.5">
                                         <div class="flex items-center justify-between">
                                             <div class="text-sm font-semibold text-gray-800">在线客服</div>
-                                            <button class="px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white text-xs rounded transition-colors" onclick="showToast('正在连接客服...')">立即咨询&gt;</button>
+                                            <button class="btn-primary px-3 h-7 text-xs rounded font-medium" onclick="showToast('正在连接客服...')">立即咨询&gt;</button>
                                         </div>
-                                        <div class="text-sm text-gray-500">有问题？即刻沟通。</div>
+                                        <div class="text-[13px] text-slate-500">有问题？即刻沟通。</div>
                                         <div class="text-sm text-gray-400">工作日服务时间：8:30-19:00</div>
                                         <div class="text-sm text-gray-400">节假日服务时间：9:00-18:00</div>
                                     </div>
@@ -1217,7 +1217,7 @@
                                     </div>
                                     <div class="flex-1 min-w-0 flex flex-col gap-1.5">
                                         <div class="text-sm font-semibold text-gray-800">官方微信号</div>
-                                        <div class="text-sm text-gray-500 leading-relaxed">打开微信"扫一扫"关注<br>最新官方动态、产品动态、<br>行业趋势尽在掌握。</div>
+                                        <div class="text-[13px] text-slate-500 leading-relaxed">打开微信"扫一扫"关注<br>最新官方动态、产品动态、<br>行业趋势尽在掌握。</div>
                                     </div>
                                     </div>
                                 </div>
@@ -1230,7 +1230,7 @@
                                     </div>
                                     <div class="flex-1 min-w-0 flex flex-col gap-1.5">
                                         <div class="text-sm font-semibold text-gray-800">壹直购好伙伴（移动端）</div>
-                                        <div class="text-sm text-gray-500 leading-relaxed">打开微信"扫一扫"登录<br>壹直购好伙伴移动端使用<br>更方便。</div>
+                                        <div class="text-[13px] text-slate-500 leading-relaxed">打开微信"扫一扫"登录<br>壹直购好伙伴移动端使用<br>更方便。</div>
                                     </div>
                                     </div>
                                 </div>
@@ -1242,35 +1242,35 @@
 <!-- 页面1：积分明细 -->
                 <div id="page-points" class="page-section">
                     <!-- 账户概览 -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                        <div class="card p-6">
-                            <div class="flex items-center justify-between mb-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div class="card p-5">
+                            <div class="flex items-center justify-between mb-3">
                                 <div class="flex items-center gap-2 text-gray-600">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                     </svg>
                                     <span class="font-medium">积分余额</span>
                                 </div>
-                                <button class="flex items-center gap-1.5 px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white text-xs rounded-lg transition-colors" onclick="handleRefresh(this)">
+                                <button class="flex items-center gap-1.5 btn-secondary px-3 h-8 text-xs rounded-lg transition-colors" onclick="handleRefresh(this)">
                                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
                                     </svg>
                                     <span>刷新</span>
                                 </button>
                             </div>
-                            <div class="text-3xl font-bold text-blue-600" id="pointsBalance">221.88</div>
-                            <div class="text-sm text-gray-500 mt-1">总可用额度(积分)</div>
+                            <div class="text-2xl font-bold text-blue-600" id="pointsBalance">221.88</div>
+                            <div class="text-[13px] text-slate-500 mt-1">总可用额度(积分)</div>
                         </div>
                         
-                        <div class="card p-6">
-                            <div class="flex items-center justify-between mb-4">
+                        <div class="card p-5">
+                            <div class="flex items-center justify-between mb-3">
                                 <div class="flex items-center gap-2 text-gray-600">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                                     </svg>
                                     <span class="font-medium">待充值金额</span>
                                 </div>
-                                <button class="flex items-center gap-1.5 px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white text-xs rounded-lg transition-colors" onclick="location.reload()">
+                                <button class="flex items-center gap-1.5 btn-secondary px-3 h-8 text-xs rounded-lg transition-colors" onclick="location.reload()">
                                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
                                     </svg>
@@ -1279,8 +1279,8 @@
                             </div>
                             <div class="flex items-end justify-between">
                                 <div>
-                                    <div class="text-3xl font-bold text-orange-500" id="pointsMaxRecharge">25,924</div>
-                                    <div class="text-sm text-gray-500 mt-1 flex items-center gap-1">基于您的账单金额计算
+                                    <div class="text-2xl font-bold text-orange-500" id="pointsMaxRecharge">25,924</div>
+                                    <div class="text-[13px] text-slate-500 mt-1 flex items-center gap-1">基于您的账单金额计算
                                         <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" onmouseenter="showTooltip(event, 'points')" onmouseleave="hideTooltip()">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                         </svg>
@@ -1294,8 +1294,8 @@
                     </div>
 
                     <!-- 筛选区域 -->
-                    <div class="card p-5 mb-6">
-                        <div class="flex flex-wrap items-end gap-4">
+                    <div class="card p-4 mb-4">
+                        <div class="flex flex-wrap items-end gap-3">
                             <div>
                                 <label class="block text-xs font-medium text-slate-500 mb-1.5">变更时间</label>
                                 <div class="flex items-center gap-2">
@@ -1316,7 +1316,7 @@
                                 </select>
                             </div>
                             <div class="flex gap-2 ml-auto">
-                                <button class="btn-primary px-5 py-2 rounded-lg text-sm font-medium" onclick="filterPointsData()">查询</button>
+                                <button class="btn-primary px-5 h-9 rounded-lg text-[13px] font-medium" onclick="filterPointsData()">查询</button>
                                 <button class="btn-secondary px-5 h-[38px] text-[13px] font-medium" onclick="resetPointsFilter()">重置</button>
                                 <button class="btn-secondary px-5 h-[38px] text-[13px] font-medium flex items-center gap-2" onclick="exportPointsData()">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1324,7 +1324,7 @@
                                     </svg>
                                     导出
                                 </button>
-                                <button class="px-5 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg text-sm font-medium flex items-center gap-2" onclick="navTo('bills')">
+                                <button class="btn-primary px-5 h-9 rounded-lg text-[13px] font-medium flex items-center gap-2" onclick="navTo('bills')">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                                     </svg>
@@ -1335,8 +1335,8 @@
                     </div>
 
                     <!-- 积分明细表格 -->
-                    <div class="card mb-6">
-                        <div class="p-5 border-b">
+                    <div class="card mb-4">
+                        <div class="px-5 py-3.5 border-b border-slate-100">
                             <h3 class="font-semibold text-gray-900">积分明细</h3>
                         </div>
                         <div class="table-container">
@@ -1355,7 +1355,7 @@
                             </table>
                         </div>
                         <div class="p-4 border-t flex items-center justify-between">
-                            <span class="text-sm text-gray-500">共 <span id="pointsTotal">15</span> 条记录</span>
+                            <span class="text-[13px] text-slate-500">共 <span id="pointsTotal">15</span> 条记录</span>
                             <div class="flex gap-1" id="pointsPagination"></div>
                         </div>
                     </div>
@@ -1365,35 +1365,35 @@
                 <!-- 页面2：余额明细 -->
                 <div id="page-balance" class="page-section">
                     <!-- 账户概览 -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                        <div class="card p-6">
-                            <div class="flex items-center justify-between mb-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div class="card p-5">
+                            <div class="flex items-center justify-between mb-3">
                                 <div class="flex items-center gap-2 text-gray-600">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
                                     </svg>
                                     <span class="font-medium">账户余额</span>
                                 </div>
-                                <button class="flex items-center gap-1.5 px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white text-xs rounded-lg transition-colors" onclick="refreshBalance(this)">
+                                <button class="flex items-center gap-1.5 btn-secondary px-3 h-8 text-xs rounded-lg transition-colors" onclick="refreshBalance(this)">
                                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
                                     </svg>
                                     <span>刷新</span>
                                 </button>
                             </div>
-                            <div class="text-3xl font-bold text-blue-600" id="balanceAmount">1.99</div>
-                            <div class="text-sm text-gray-500 mt-1">总可用额度(元)</div>
+                            <div class="text-2xl font-bold text-blue-600" id="balanceAmount">1.99</div>
+                            <div class="text-[13px] text-slate-500 mt-1">总可用额度(元)</div>
                         </div>
                         
-                        <div class="card p-6">
-                            <div class="flex items-center justify-between mb-4">
+                        <div class="card p-5">
+                            <div class="flex items-center justify-between mb-3">
                                 <div class="flex items-center gap-2 text-gray-600">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                                     </svg>
                                     <span class="font-medium">待充值金额</span>
                                 </div>
-                                <button class="flex items-center gap-1.5 px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white text-xs rounded-lg transition-colors" onclick="location.reload()">
+                                <button class="flex items-center gap-1.5 btn-secondary px-3 h-8 text-xs rounded-lg transition-colors" onclick="location.reload()">
                                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
                                     </svg>
@@ -1402,8 +1402,8 @@
                             </div>
                             <div class="flex items-end justify-between">
                                 <div>
-                                    <div class="text-3xl font-bold text-orange-500" id="balanceMaxRecharge">25,760.00</div>
-                                    <div class="text-sm text-gray-500 mt-1 flex items-center gap-1">基于您的账单金额计算
+                                    <div class="text-2xl font-bold text-orange-500" id="balanceMaxRecharge">25,760.00</div>
+                                    <div class="text-[13px] text-slate-500 mt-1 flex items-center gap-1">基于您的账单金额计算
                                         <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" onmouseenter="showTooltip(event, 'balance')" onmouseleave="hideTooltip()">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                         </svg>
@@ -1417,8 +1417,8 @@
                     </div>
 
                     <!-- 筛选区域 -->
-                    <div class="card p-5 mb-6">
-                        <div class="flex flex-wrap items-end gap-4">
+                    <div class="card p-4 mb-4">
+                        <div class="flex flex-wrap items-end gap-3">
                             <div>
                                 <label class="block text-xs font-medium text-slate-500 mb-1.5">变更时间</label>
                                 <div class="flex items-center gap-2">
@@ -1441,7 +1441,7 @@
                                 </select>
                             </div>
                             <div class="flex gap-2 ml-auto">
-                                <button class="btn-primary px-5 py-2 rounded-lg text-sm font-medium" onclick="filterBalanceData()">查询</button>
+                                <button class="btn-primary px-5 h-9 rounded-lg text-[13px] font-medium" onclick="filterBalanceData()">查询</button>
                                 <button class="btn-secondary px-5 h-[38px] text-[13px] font-medium" onclick="resetBalanceFilter()">重置</button>
                                 <button class="btn-secondary px-5 h-[38px] text-[13px] font-medium flex items-center gap-2" onclick="exportBalanceData()">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1449,7 +1449,7 @@
                                     </svg>
                                     导出
                                 </button>
-                                <button class="px-5 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg text-sm font-medium flex items-center gap-2" onclick="navTo('bills')">
+                                <button class="btn-primary px-5 h-9 rounded-lg text-[13px] font-medium flex items-center gap-2" onclick="navTo('bills')">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                                     </svg>
@@ -1460,8 +1460,8 @@
                     </div>
 
                     <!-- 余额明细表格 -->
-                    <div class="card mb-6">
-                        <div class="p-5 border-b">
+                    <div class="card mb-4">
+                        <div class="px-5 py-3.5 border-b border-slate-100">
                             <h3 class="font-semibold text-gray-900">余额明细</h3>
                         </div>
                         <div class="table-container">
@@ -1480,7 +1480,7 @@
                             </table>
                         </div>
                         <div class="p-4 border-t flex items-center justify-between">
-                            <span class="text-sm text-gray-500">共 <span id="balanceTotal">16</span> 条记录</span>
+                            <span class="text-[13px] text-slate-500">共 <span id="balanceTotal">16</span> 条记录</span>
                             <div class="flex gap-1" id="balancePagination"></div>
                         </div>
                     </div>
@@ -1492,7 +1492,7 @@
                     <!-- 页面标题 -->
                     <div class="bg-white p-6 mb-4">
                         <h2 class="text-xl font-semibold text-gray-900">全部账单</h2>
-                        <p class="text-sm text-gray-500 mt-1">展示您所有门店的账单信息</p>
+                        <p class="text-[13px] text-slate-500 mt-1">展示您所有门店的账单信息</p>
                     </div>
 
                     <!-- Tab切换 -->
@@ -1506,7 +1506,7 @@
                     <!-- 应付账单内容 -->
                     <div id="bills-payable" class="bg-white rounded-b-lg">
                         <!-- 搜索栏 -->
-                        <div class="p-5 border-b">
+                        <div class="px-5 py-3.5 border-b border-slate-100">
                             <div class="flex items-end gap-4 flex-wrap">
                                 <div>
                                     <label class="block text-xs font-medium text-slate-500 mb-1.5">应付单号</label>
@@ -1530,7 +1530,7 @@
                                     </div>
                                 </div>
                                 <div class="flex gap-2 ml-auto">
-                                    <button class="btn-primary px-5 py-2 rounded-lg text-sm font-medium" onclick="filterPayableData()">查询</button>
+                                    <button class="btn-primary px-5 h-9 rounded-lg text-[13px] font-medium" onclick="filterPayableData()">查询</button>
                                     <button class="btn-secondary px-5 h-[38px] text-[13px] font-medium" onclick="resetPayableFilter()">重置</button>
                                     <button class="btn-secondary px-5 h-[38px] text-[13px] font-medium flex items-center gap-2">
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1543,21 +1543,21 @@
                         </div>
 
                         <!-- 汇总数据 -->
-                        <div class="p-5 border-b bg-gray-50 grid grid-cols-4 gap-6">
+                        <div class="px-5 py-4 border-b border-slate-100 bg-slate-50/60 grid grid-cols-4 gap-4">
                             <div>
-                                <div class="text-sm text-gray-500">账单金额(元)</div>
+                                <div class="text-[13px] text-slate-500">账单金额(元)</div>
                                 <div class="text-xl font-semibold text-gray-900 mt-1" id="payableTotalAmount">20,000.00</div>
                             </div>
                             <div>
-                                <div class="text-sm text-gray-500">已付金额(元)</div>
+                                <div class="text-[13px] text-slate-500">已付金额(元)</div>
                                 <div class="text-xl font-semibold text-gray-900 mt-1" id="payablePaidAmount">2,000.00</div>
                             </div>
                             <div>
-                                <div class="text-sm text-gray-500">退款金额(元)</div>
+                                <div class="text-[13px] text-slate-500">退款金额(元)</div>
                                 <div class="text-xl font-semibold text-gray-900 mt-1" id="payableRefundAmount">1,000.00</div>
                             </div>
                             <div>
-                                <div class="text-sm text-gray-500">待付金额(元)</div>
+                                <div class="text-[13px] text-slate-500">待付金额(元)</div>
                                 <div class="text-xl font-semibold text-red-500 mt-1" id="payablePendingAmount">16,000.00</div>
                             </div>
                         </div>
@@ -1622,15 +1622,15 @@
                             </table>
                         </div>
                         <div class="p-4 border-t flex items-center justify-between">
-                            <span class="text-sm text-gray-500">共 <span>4</span> 条记录</span>
+                            <span class="text-[13px] text-slate-500">共 <span>4</span> 条记录</span>
                             <div class="flex gap-1">
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-500 hover:bg-gray-50">&lt;</button>
-                                <button class="px-3 py-1 rounded bg-blue-500 text-white">1</button>
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-600 hover:bg-gray-50">2</button>
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-600 hover:bg-gray-50">3</button>
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-600 hover:bg-gray-50">4</button>
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-600 hover:bg-gray-50">5</button>
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-500 hover:bg-gray-50">&gt;</button>
+                                <button class="pagination-btn">&lt;</button>
+                                <button class="pagination-btn active">1</button>
+                                <button class="pagination-btn">2</button>
+                                <button class="pagination-btn">3</button>
+                                <button class="pagination-btn">4</button>
+                                <button class="pagination-btn">5</button>
+                                <button class="pagination-btn">&gt;</button>
                             </div>
                         </div>
                     </div>
@@ -1638,7 +1638,7 @@
                     <!-- 打款记录内容 -->
                     <div id="bills-payment" class="bg-white rounded-b-lg hidden">
                         <!-- 搜索栏 -->
-                        <div class="p-5 border-b">
+                        <div class="px-5 py-3.5 border-b border-slate-100">
                             <div class="flex items-end gap-4 flex-wrap">
                                 <div>
                                     <label class="block text-xs font-medium text-slate-500 mb-1.5">交易单号</label>
@@ -1661,7 +1661,7 @@
                                     </div>
                                 </div>
                                 <div class="flex gap-2 ml-auto">
-                                    <button class="btn-primary px-5 py-2 rounded-lg text-sm font-medium" onclick="filterPaymentData()">查询</button>
+                                    <button class="btn-primary px-5 h-9 rounded-lg text-[13px] font-medium" onclick="filterPaymentData()">查询</button>
                                     <button class="btn-secondary px-5 h-[38px] text-[13px] font-medium" onclick="resetPaymentFilter()">重置</button>
                                     <button class="btn-secondary px-5 h-[38px] text-[13px] font-medium flex items-center gap-2">
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1719,15 +1719,15 @@
                             </table>
                         </div>
                         <div class="p-4 border-t flex items-center justify-between">
-                            <span class="text-sm text-gray-500">共 <span>3</span> 条记录</span>
+                            <span class="text-[13px] text-slate-500">共 <span>3</span> 条记录</span>
                             <div class="flex gap-1">
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-500 hover:bg-gray-50">&lt;</button>
-                                <button class="px-3 py-1 rounded bg-blue-500 text-white">1</button>
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-600 hover:bg-gray-50">2</button>
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-600 hover:bg-gray-50">3</button>
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-600 hover:bg-gray-50">4</button>
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-600 hover:bg-gray-50">5</button>
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-500 hover:bg-gray-50">&gt;</button>
+                                <button class="pagination-btn">&lt;</button>
+                                <button class="pagination-btn active">1</button>
+                                <button class="pagination-btn">2</button>
+                                <button class="pagination-btn">3</button>
+                                <button class="pagination-btn">4</button>
+                                <button class="pagination-btn">5</button>
+                                <button class="pagination-btn">&gt;</button>
                             </div>
                         </div>
                     </div>
@@ -1751,7 +1751,7 @@
                                     <div class="text-gray-400 text-sm mt-1">总可用额度(元)</div>
                                 </div>
                             </div>
-                            <button class="flex items-center gap-1.5 px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white text-xs rounded-lg transition-colors" onclick="refreshEquityData()">
+                            <button class="flex items-center gap-1.5 btn-secondary px-3 h-8 text-xs rounded-lg transition-colors" onclick="refreshEquityData()">
                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
                                 </svg>
@@ -1781,7 +1781,7 @@
                                 </select>
                             </div>
                             <div class="flex gap-2 ml-auto">
-                                <button class="btn-primary px-5 py-2 rounded-lg text-sm font-medium" onclick="filterEquityData()">查询</button>
+                                <button class="btn-primary px-5 h-9 rounded-lg text-[13px] font-medium" onclick="filterEquityData()">查询</button>
                                 <button class="btn-secondary px-5 h-[38px] text-[13px] font-medium" onclick="resetEquityFilter()">重置</button>
                                 <button class="btn-secondary px-5 h-[38px] text-[13px] font-medium flex items-center gap-2">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1789,7 +1789,7 @@
                                     </svg>
                                     导出
                                 </button>
-                                <button class="px-5 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg text-sm font-medium flex items-center gap-2" onclick="navTo('bills')">
+                                <button class="btn-primary px-5 h-9 rounded-lg text-[13px] font-medium flex items-center gap-2" onclick="navTo('bills')">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                                     </svg>
@@ -1834,16 +1834,16 @@
                             </table>
                         </div>
                         <div class="p-4 border-t flex items-center justify-between">
-                            <span class="text-sm text-gray-500">共 <span>2</span> 条记录</span>
+                            <span class="text-[13px] text-slate-500">共 <span>2</span> 条记录</span>
                             <div class="flex items-center gap-2">
-                                <span class="text-sm text-gray-500">10条/页</span>
+                                <span class="text-[13px] text-slate-500">10条/页</span>
                                 <div class="flex gap-1 ml-4">
-                                    <button class="px-3 py-1 rounded border border-gray-300 text-gray-500 hover:bg-gray-50">&lt;</button>
-                                    <button class="px-3 py-1 rounded bg-blue-500 text-white">1</button>
-                                    <button class="px-3 py-1 rounded border border-gray-300 text-gray-600 hover:bg-gray-50">&gt;</button>
-                                    <span class="text-sm text-gray-500 ml-2">前往</span>
+                                    <button class="pagination-btn">&lt;</button>
+                                    <button class="pagination-btn active">1</button>
+                                    <button class="pagination-btn">&gt;</button>
+                                    <span class="text-[13px] text-slate-500 ml-2">前往</span>
                                     <input type="text" class="w-12 px-2 py-1 border border-gray-300 rounded text-sm text-center" value="1">
-                                    <span class="text-sm text-gray-500">页</span>
+                                    <span class="text-[13px] text-slate-500">页</span>
                                 </div>
                             </div>
                         </div>
@@ -1853,14 +1853,14 @@
                 <!-- 页面5：授信单明细 -->
                 <div id="page-credit" class="page-section">
                     <!-- 账户概览 - 壹直购积分和批量额度 -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div class="bg-white rounded-xl p-6 flex items-center justify-between">
                             <div>
                                 <div class="text-gray-600 text-sm mb-2">壹直购积分</div>
                                 <div class="text-4xl font-bold text-blue-600">100.00</div>
                                 <div class="text-gray-400 text-sm mt-1">总可用额度(元)</div>
                             </div>
-                            <button class="flex items-center gap-1.5 px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white text-xs rounded-lg transition-colors" onclick="refreshCreditQuotaData()">
+                            <button class="flex items-center gap-1.5 btn-secondary px-3 h-8 text-xs rounded-lg transition-colors" onclick="refreshCreditQuotaData()">
                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
                                 </svg>
@@ -1874,7 +1874,7 @@
                                 <div class="text-4xl font-bold text-blue-600">0.00</div>
                                 <div class="text-gray-400 text-sm mt-1">总可用额度(元)</div>
                             </div>
-                            <button class="flex items-center gap-1.5 px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white text-xs rounded-lg transition-colors" onclick="refreshCreditQuotaData()">
+                            <button class="flex items-center gap-1.5 btn-secondary px-3 h-8 text-xs rounded-lg transition-colors" onclick="refreshCreditQuotaData()">
                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
                                 </svg>
@@ -1896,7 +1896,7 @@
                     <div id="credit-quota" class="bg-white rounded-b-lg">
 
                         <!-- 搜索栏 -->
-                        <div class="p-5 border-b">
+                        <div class="px-5 py-3.5 border-b border-slate-100">
                             <div class="flex items-end gap-4 flex-wrap">
                                 <div>
                                     <label class="block text-xs font-medium text-slate-500 mb-1.5">授信单号</label>
@@ -1919,7 +1919,7 @@
                                     </div>
                                 </div>
                                 <div class="flex gap-2 ml-auto">
-                                    <button class="btn-primary px-5 py-2 rounded-lg text-sm font-medium" onclick="filterCreditQuotaData()">查询</button>
+                                    <button class="btn-primary px-5 h-9 rounded-lg text-[13px] font-medium" onclick="filterCreditQuotaData()">查询</button>
                                     <button class="btn-secondary px-5 h-[38px] text-[13px] font-medium" onclick="resetCreditQuotaFilter()">重置</button>
                                     <button class="btn-secondary px-5 h-[38px] text-[13px] font-medium flex items-center gap-2">
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1927,7 +1927,7 @@
                                         </svg>
                                         导出
                                     </button>
-                                    <button class="px-5 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg text-sm font-medium flex items-center gap-2" onclick="navTo('bills')">
+                                    <button class="btn-primary px-5 h-9 rounded-lg text-[13px] font-medium flex items-center gap-2" onclick="navTo('bills')">
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                                         </svg>
@@ -1983,11 +1983,11 @@
                             </table>
                         </div>
                         <div class="p-4 border-t flex items-center justify-between">
-                            <span class="text-sm text-gray-500">共 <span>2</span> 条记录</span>
+                            <span class="text-[13px] text-slate-500">共 <span>2</span> 条记录</span>
                             <div class="flex gap-1">
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-500 hover:bg-gray-50">&lt;</button>
-                                <button class="px-3 py-1 rounded bg-blue-500 text-white">1</button>
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-600 hover:bg-gray-50">&gt;</button>
+                                <button class="pagination-btn">&lt;</button>
+                                <button class="pagination-btn active">1</button>
+                                <button class="pagination-btn">&gt;</button>
                             </div>
                         </div>
                     </div>
@@ -1995,7 +1995,7 @@
                     <!-- Tab2: 授信单账户明细 -->
                     <div id="credit-account" class="bg-white rounded-b-lg hidden">
                         <!-- 搜索栏 -->
-                        <div class="p-5 border-b">
+                        <div class="px-5 py-3.5 border-b border-slate-100">
                             <div class="flex items-end gap-4 flex-wrap">
                                 <div>
                                     <label class="block text-xs font-medium text-slate-500 mb-1.5">交易流水单号</label>
@@ -2023,7 +2023,7 @@
                                     </div>
                                 </div>
                                 <div class="flex gap-2 ml-auto">
-                                    <button class="btn-primary px-5 py-2 rounded-lg text-sm font-medium" onclick="filterCreditAccountData()">查询</button>
+                                    <button class="btn-primary px-5 h-9 rounded-lg text-[13px] font-medium" onclick="filterCreditAccountData()">查询</button>
                                     <button class="btn-secondary px-5 h-[38px] text-[13px] font-medium" onclick="resetCreditAccountFilter()">重置</button>
                                     <button class="btn-secondary px-5 h-[38px] text-[13px] font-medium flex items-center gap-2">
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -2031,7 +2031,7 @@
                                         </svg>
                                         导出
                                     </button>
-                                    <button class="px-5 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg text-sm font-medium flex items-center gap-2" onclick="navTo('bills')">
+                                    <button class="btn-primary px-5 h-9 rounded-lg text-[13px] font-medium flex items-center gap-2" onclick="navTo('bills')">
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                                         </svg>
@@ -2075,11 +2075,11 @@
                             </table>
                         </div>
                         <div class="p-4 border-t flex items-center justify-between">
-                            <span class="text-sm text-gray-500">共 <span>1</span> 条记录</span>
+                            <span class="text-[13px] text-slate-500">共 <span>1</span> 条记录</span>
                             <div class="flex gap-1">
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-500 hover:bg-gray-50">&lt;</button>
-                                <button class="px-3 py-1 rounded bg-blue-500 text-white">1</button>
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-600 hover:bg-gray-50">&gt;</button>
+                                <button class="pagination-btn">&lt;</button>
+                                <button class="pagination-btn active">1</button>
+                                <button class="pagination-btn">&gt;</button>
                             </div>
                         </div>
                     </div>
@@ -2087,27 +2087,27 @@
                     <!-- Tab3: 账单明细 -->
                     <div id="credit-bills" class="bg-white rounded-b-lg hidden">
                         <!-- 汇总数据 -->
-                        <div class="p-5 border-b bg-gray-50 grid grid-cols-4 gap-6">
+                        <div class="px-5 py-4 border-b border-slate-100 bg-slate-50/60 grid grid-cols-4 gap-4">
                             <div>
-                                <div class="text-sm text-gray-500">应付金额(元)</div>
+                                <div class="text-[13px] text-slate-500">应付金额(元)</div>
                                 <div class="text-xl font-semibold text-blue-600 mt-1">2.60</div>
                             </div>
                             <div>
-                                <div class="text-sm text-gray-500">已还款金额(元)</div>
+                                <div class="text-[13px] text-slate-500">已还款金额(元)</div>
                                 <div class="text-xl font-semibold text-green-600 mt-1">2.60</div>
                             </div>
                             <div>
-                                <div class="text-sm text-gray-500">退款金额(元)</div>
+                                <div class="text-[13px] text-slate-500">退款金额(元)</div>
                                 <div class="text-xl font-semibold text-gray-600 mt-1">0.00</div>
                             </div>
                             <div>
-                                <div class="text-sm text-gray-500">待还款金额(元)</div>
+                                <div class="text-[13px] text-slate-500">待还款金额(元)</div>
                                 <div class="text-xl font-semibold text-red-500 mt-1">0.00</div>
                             </div>
                         </div>
 
                         <!-- 搜索栏 -->
-                        <div class="p-5 border-b">
+                        <div class="px-5 py-3.5 border-b border-slate-100">
                             <div class="flex items-end gap-4 flex-wrap">
                                 <div>
                                     <label class="block text-xs font-medium text-slate-500 mb-1.5">应付单号</label>
@@ -2131,7 +2131,7 @@
                                     </div>
                                 </div>
                                 <div class="flex gap-2 ml-auto">
-                                    <button class="btn-primary px-5 py-2 rounded-lg text-sm font-medium" onclick="filterCreditBillsData()">查询</button>
+                                    <button class="btn-primary px-5 h-9 rounded-lg text-[13px] font-medium" onclick="filterCreditBillsData()">查询</button>
                                     <button class="btn-secondary px-5 h-[38px] text-[13px] font-medium" onclick="resetCreditBillsFilter()">重置</button>
                                     <button class="btn-secondary px-5 h-[38px] text-[13px] font-medium flex items-center gap-2">
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -2139,7 +2139,7 @@
                                         </svg>
                                         导出
                                     </button>
-                                    <button class="px-5 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg text-sm font-medium flex items-center gap-2" onclick="navTo('bills')">
+                                    <button class="btn-primary px-5 h-9 rounded-lg text-[13px] font-medium flex items-center gap-2" onclick="navTo('bills')">
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                                         </svg>
@@ -2199,11 +2199,11 @@
                             </table>
                         </div>
                         <div class="p-4 border-t flex items-center justify-between">
-                            <span class="text-sm text-gray-500">共 <span>3</span> 条记录</span>
+                            <span class="text-[13px] text-slate-500">共 <span>3</span> 条记录</span>
                             <div class="flex gap-1">
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-500 hover:bg-gray-50">&lt;</button>
-                                <button class="px-3 py-1 rounded bg-blue-500 text-white">1</button>
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-600 hover:bg-gray-50">&gt;</button>
+                                <button class="pagination-btn">&lt;</button>
+                                <button class="pagination-btn active">1</button>
+                                <button class="pagination-btn">&gt;</button>
                             </div>
                         </div>
                     </div>
@@ -2213,7 +2213,7 @@
                 <div id="page-credit-posting" class="page-section">
                     <div class="bg-white rounded-xl overflow-hidden">
                         <!-- 搜索筛选区 -->
-                        <div class="p-5 border-b">
+                        <div class="px-5 py-3.5 border-b border-slate-100">
                             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
                                 <div>
                                     <label class="block text-xs font-medium text-slate-500 mb-1.5">批次号</label>
@@ -2306,11 +2306,11 @@
 
                         <!-- 分页 -->
                         <div class="p-4 border-t flex items-center justify-between">
-                            <span class="text-sm text-gray-500">共 0 条记录</span>
+                            <span class="text-[13px] text-slate-500">共 0 条记录</span>
                             <div class="flex gap-1">
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-500 hover:bg-gray-50">&lt;</button>
-                                <button class="px-3 py-1 rounded bg-blue-500 text-white">1</button>
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-600 hover:bg-gray-50">&gt;</button>
+                                <button class="pagination-btn">&lt;</button>
+                                <button class="pagination-btn active">1</button>
+                                <button class="pagination-btn">&gt;</button>
                             </div>
                         </div>
                     </div>
@@ -2325,9 +2325,9 @@
                                 <div>
                                     <input type="text" id="userSearchInput" class="border border-slate-200 rounded-lg px-3 text-[13px] w-56" placeholder="搜索姓名或手机号" onkeyup="filterUserList()">
                                 </div>
-                                <button class="btn-primary px-5 py-2 rounded-lg text-sm font-medium" onclick="filterUserList()">查询</button>
+                                <button class="btn-primary px-5 h-9 rounded-lg text-[13px] font-medium" onclick="filterUserList()">查询</button>
                             </div>
-                            <button class="px-5 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg text-sm font-medium flex items-center gap-2" onclick="openAddUserModal()">
+                            <button class="btn-primary px-5 h-9 rounded-lg text-[13px] font-medium flex items-center gap-2" onclick="openAddUserModal()">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
                                 </svg>
@@ -2355,11 +2355,11 @@
 
                         <!-- 分页 -->
                         <div class="p-4 border-t flex items-center justify-between">
-                            <span class="text-sm text-gray-500">共 <span id="userTotalCount">0</span> 条记录</span>
+                            <span class="text-[13px] text-slate-500">共 <span id="userTotalCount">0</span> 条记录</span>
                             <div class="flex gap-1">
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-500 hover:bg-gray-50">&lt;</button>
-                                <button class="px-3 py-1 rounded bg-blue-500 text-white">1</button>
-                                <button class="px-3 py-1 rounded border border-gray-300 text-gray-600 hover:bg-gray-50">&gt;</button>
+                                <button class="pagination-btn">&lt;</button>
+                                <button class="pagination-btn active">1</button>
+                                <button class="pagination-btn">&gt;</button>
                             </div>
                         </div>
                     </div>
@@ -2385,10 +2385,10 @@
                 <div class="bg-gray-50 rounded-lg p-4 mb-4">
                     <div class="flex items-center justify-between">
                         <div>
-                            <div class="text-sm text-gray-500">当前充值门店</div>
+                            <div class="text-[13px] text-slate-500">当前充值门店</div>
                             <div class="font-medium text-gray-900 mt-1" id="currentStoreName">广东张三有限公司</div>
                         </div>
-                        <button class="flex items-center gap-1 px-3 py-1.5 text-sm text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-blue-600 transition-colors" onclick="openStoreSelector()">
+                        <button class="btn-secondary flex items-center gap-1 px-3 h-9 text-[13px] font-medium rounded-lg" onclick="openStoreSelector()">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
                             </svg>
@@ -2482,7 +2482,7 @@
                     <div class="flex items-center gap-3 p-4 border-2 rounded-lg transition-all border-blue-300 bg-blue-50 store-item" data-store-id="1" data-store-name="广东张三有限公司">
                         <div class="flex-1">
                             <div class="font-medium text-gray-900">广东张三有限公司</div>
-                            <div class="text-sm text-gray-500 mt-1">当前门店</div>
+                            <div class="text-[13px] text-slate-500 mt-1">当前门店</div>
                         </div>
                         <span class="text-xs text-blue-500 bg-blue-100 px-2 py-0.5 rounded">当前</span>
                     </div>
@@ -2579,7 +2579,7 @@
                     </svg>
                 </div>
                 <h3 class="text-lg font-semibold text-gray-900 mb-2">充值成功</h3>
-                <p class="text-sm text-gray-500 mb-6" id="successDesc">积分已实时到账，您可以立即使用</p>
+                <p class="text-[13px] text-slate-500 mb-6" id="successDesc">积分已实时到账，您可以立即使用</p>
 
                 <div class="flex gap-3">
                     <button class="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50 font-medium" id="viewDetailBtn" onclick="viewDetail()">查看明细</button>
@@ -4501,17 +4501,17 @@
             var pagination = document.getElementById('invoicePagination');
             var html = '';
             if (invoicePageNum > 1) {
-                html += '<button class="px-3 py-1 rounded border border-gray-300 text-gray-600 hover:bg-gray-50" onclick="invoicePageNum--;renderInvoiceTable()">&lt;</button>';
+                html += '<button class="pagination-btn" onclick="invoicePageNum--;renderInvoiceTable()">&lt;</button>';
             }
             for (var i = 1; i <= totalPages; i++) {
                 if (i === invoicePageNum) {
-                    html += '<button class="px-3 py-1 rounded bg-blue-500 text-white">' + i + '</button>';
+                    html += '<button class="pagination-btn active">' + i + '</button>';
                 } else {
-                    html += '<button class="px-3 py-1 rounded border border-gray-300 text-gray-600 hover:bg-gray-50" onclick="invoicePageNum=' + i + ';renderInvoiceTable()">' + i + '</button>';
+                    html += '<button class="pagination-btn" onclick="invoicePageNum=' + i + ';renderInvoiceTable()">' + i + '</button>';
                 }
             }
             if (invoicePageNum < totalPages) {
-                html += '<button class="px-3 py-1 rounded border border-gray-300 text-gray-600 hover:bg-gray-50" onclick="invoicePageNum++;renderInvoiceTable()">&gt;</button>';
+                html += '<button class="pagination-btn" onclick="invoicePageNum++;renderInvoiceTable()">&gt;</button>';
             }
             pagination.innerHTML = html;
         }
@@ -4642,17 +4642,17 @@
             var pagination = document.getElementById('invoicePagination');
             var html = '';
             if (invoicePageNum > 1) {
-                html += '<button class="px-3 py-1 rounded border border-gray-300 text-gray-600 hover:bg-gray-50" onclick="invoicePageNum--;renderInvoiceTable()">&lt;</button>';
+                html += '<button class="pagination-btn" onclick="invoicePageNum--;renderInvoiceTable()">&lt;</button>';
             }
             for (var i = 1; i <= totalPages; i++) {
                 if (i === invoicePageNum) {
-                    html += '<button class="px-3 py-1 rounded bg-blue-500 text-white">' + i + '</button>';
+                    html += '<button class="pagination-btn active">' + i + '</button>';
                 } else {
-                    html += '<button class="px-3 py-1 rounded border border-gray-300 text-gray-600 hover:bg-gray-50" onclick="invoicePageNum=' + i + ';renderInvoiceTable()">' + i + '</button>';
+                    html += '<button class="pagination-btn" onclick="invoicePageNum=' + i + ';renderInvoiceTable()">' + i + '</button>';
                 }
             }
             if (invoicePageNum < totalPages) {
-                html += '<button class="px-3 py-1 rounded border border-gray-300 text-gray-600 hover:bg-gray-50" onclick="invoicePageNum++;renderInvoiceTable()">&gt;</button>';
+                html += '<button class="pagination-btn" onclick="invoicePageNum++;renderInvoiceTable()">&gt;</button>';
             }
             pagination.innerHTML = html;
         }
@@ -4761,7 +4761,7 @@
                 <!-- 文案 -->
                 <div class="px-6 pt-4 pb-2 text-left">
                     <h3 class="text-lg font-bold text-gray-900 mb-2">✨ 自助充值，即刻到账 ✨</h3>
-                    <p class="text-sm text-gray-500 leading-relaxed">无需商务介入，您可在账户内直接完成充值，资金实时到账，即刻可用</p>
+                    <p class="text-[13px] text-slate-500 leading-relaxed">无需商务介入，您可在账户内直接完成充值，资金实时到账，即刻可用</p>
                 </div>
 
                 <!-- 底部按钮 -->
@@ -4797,7 +4797,7 @@
                     <div class="flex items-center gap-3 p-4 border-2 rounded-lg transition-all border-blue-300 bg-blue-50 store-item" data-store-id="1" data-store-name="广东张三有限公司">
                         <div class="flex-1">
                             <div class="font-medium text-gray-900">广东张三有限公司</div>
-                            <div class="text-sm text-gray-500 mt-1">当前门店</div>
+                            <div class="text-[13px] text-slate-500 mt-1">当前门店</div>
                         </div>
                         <span class="text-xs text-blue-500 bg-blue-100 px-2 py-0.5 rounded">当前</span>
                     </div>
@@ -4894,7 +4894,7 @@
                     </svg>
                 </div>
                 <h3 class="text-lg font-semibold text-gray-900 mb-2">充值成功</h3>
-                <p class="text-sm text-gray-500 mb-6" id="successDesc">积分已实时到账，您可以立即使用</p>
+                <p class="text-[13px] text-slate-500 mb-6" id="successDesc">积分已实时到账，您可以立即使用</p>
 
                 <div class="flex gap-3">
                     <button class="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50 font-medium" id="viewDetailBtn" onclick="viewDetail()">查看明细</button>
@@ -6166,7 +6166,7 @@
                     <!-- 文案 -->
                     <div class="px-6 pt-4 pb-2 text-left">
                         <h3 class="text-lg font-bold text-gray-900 mb-2">自助充值，即刻到账</h3>
-                        <p class="text-sm text-gray-500 leading-relaxed">无需商务介入，您可在账户内直接完成充值，资金实时到账，即刻可用</p>
+                        <p class="text-[13px] text-slate-500 leading-relaxed">无需商务介入，您可在账户内直接完成充值，资金实时到账，即刻可用</p>
                     </div>
 
                     <!-- 底部 -->
@@ -6298,7 +6298,7 @@
                                 <path d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" fill-opacity="0"></path>
                                 <path fill-rule="evenodd" d="M5.5 13a3.5 3.5 0 01-.6-6.96 5.48 5.48 0 0110.92 0 3.5 3.5 0 01-.6 6.96H13a.75.75 0 010-1.5h1.5a2 2 0 10-.11-3.99 4.02 4.02 0 00-7.78 0A2 2 0 007 11.5H8.5a.75.75 0 010 1.5H5.5zM9.75 8a.75.75 0 00-1.5 0v2.69l-.72-.72a.75.75 0 00-1.06 1.06l2 2a.75.75 0 001.06 0l2-2a.75.75 0 00-1.06-1.06l-.72.72V8z" clip-rule="evenodd"></path>
                             </svg>
-                            <div class="text-sm text-gray-500">将文件拖到此处，或<span class="text-blue-500">点击上传</span></div>
+                            <div class="text-[13px] text-slate-500">将文件拖到此处，或<span class="text-blue-500">点击上传</span></div>
                         </div>
                         <input type="file" id="batchCreditFile" class="hidden" accept=".xlsx,.xls" onchange="handleBatchCreditFile(this)">
                         <div id="batchCreditFileName" class="text-xs text-gray-500 mt-2 hidden"></div>
@@ -6310,7 +6310,7 @@
                     <label class="text-[13px] text-slate-600 font-medium w-20 text-right">上传附件</label>
                     <div class="flex-1">
                         <div class="w-24 h-24 border-2 border-dashed border-slate-200 rounded-xl flex items-center justify-center cursor-pointer hover:border-blue-400 transition-colors" onclick="document.getElementById('batchCreditAttachment').click()">
-                            <span class="text-3xl text-gray-400">+</span>
+                            <span class="text-2xl text-gray-400">+</span>
                         </div>
                         <input type="file" id="batchCreditAttachment" class="hidden" onchange="handleBatchCreditAttachment(this)">
                         <div id="batchCreditAttachmentName" class="text-xs text-gray-500 mt-1">附件(可选)</div>
